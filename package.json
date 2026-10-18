@@ -1,0 +1,58 @@
+{
+  "name": "rostamp",
+  "productName": "RoStamp",
+  "version": "1.0.1-beta",
+  "description": "Make Roblox update icons: hourglass, title strips and ribbons.",
+  "main": "electron/main.js",
+  "author": "konopsiakk",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win"
+  },
+  "build": {
+    "appId": "online.konopsiakk.rostamp",
+    "productName": "RoStamp",
+    "copyright": "© 2026 konopsiakk. All Rights Reserved.",
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "RoStamp-${version}-portable.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "RoStamp",
+      "artifactName": "RoStamp-Setup-${version}.${ext}",
+      "license": "build/license.txt",
+      "include": "build/installer.nsh"
+    }
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "^25.1.8"
+  }
+}
